@@ -4,10 +4,37 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-barter = "0.8.15"
-# prost = "0.13.2"
-# tokio = { version = "1.40.0", features = ["macros", "rt-multi-thread"] }
-# tonic = "0.12.2"
+# Barter Ecosystem
+barter-data = { version = "0.8.1"}
+barter-integration = {  version = "0.7.3" }
+
+# Logging
+tracing = { version = "0.1.40" }
+
+# Async
+tokio =  { version = "1.38.0" }
+tokio-stream = { version = "0.1.15" }
+futures = { version = "0.3.30" }
+async-trait = { version = "0.1.57" }
+
+# Error
+thiserror = { version = "1.0.61" }
+
+# SerDe
+serde = { version = "1.0.203", features = ["derive"] }
+serde_json = { version = "1.0.120" }
+
+# Persistence
+redis = "0.25.4"
+
+# Strategy
+ta = { version = "0.5.0" }
+
+# Misc
+uuid = { version = "1.9.1", features = ["v4", "serde"]}
+chrono = { version = "0.4.38", features = ["serde"]}
+parking_lot =  { version = "0.12.3" }
+prettytable-rs = "0.10.0"
 
 
 [build-dependencies]
