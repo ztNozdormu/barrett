@@ -3,6 +3,10 @@ name = "barter-bot"
 version = "0.1.0"
 edition = "2021"
 
+[dev-dependencies]
+tracing = { version = "0.1.40" }
+tracing-subscriber = { version = "0.3.16" }
+
 [dependencies]
 # Barter Ecosystem
 barter-data = { version = "0.8.1"}
@@ -35,6 +39,7 @@ uuid = { version = "1.9.1", features = ["v4", "serde"]}
 chrono = { version = "0.4.38", features = ["serde"]}
 parking_lot =  { version = "0.12.3" }
 prettytable-rs = "0.10.0"
+
 
 
 [build-dependencies]

@@ -242,6 +242,9 @@ pub mod statistic;
 /// Execution components, as well as shared access to a global Portfolio.
 pub mod engine;
 
+// 机器人模块
+pub mod bot;
+
 #[macro_use]
 extern crate prettytable;
 

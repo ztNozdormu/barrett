@@ -1,4 +1,4 @@
-use barter_bot::{
+use crate::{
     data::historical,
     engine::{trader::Trader, Engine},
     event::{Event, EventTx},
@@ -32,8 +32,8 @@ use uuid::Uuid;
 
 const DATA_HISTORIC_CANDLES_1H: &str = "examples/data/candles_1h.json";
 
-#[tokio::main]
-async fn main() {
+// 机器人启动函数
+pub async fn bot_run() {
     // Create channel to distribute Commands to the Engine & it's Traders (eg/ Command::Terminate)
     let (_command_tx, command_rx) = mpsc::channel(20);
 
@@ -81,7 +81,7 @@ async fn main() {
             .event_tx(event_tx.clone())
             .portfolio(Arc::clone(&portfolio))
             .data(historical::MarketFeed::new(
-                load_json_market_event_candles().into_iter(),
+                load_json_market_event_candles(),
             ))
             .strategy(RSIStrategy::new(StrategyConfig { rsi_period: 14 }))
             .execution(SimulatedExecution::new(ExecutionConfig {
@@ -117,7 +117,7 @@ async fn main() {
     tokio::spawn(listen_to_engine_events(event_rx));
     engine.run().await;
 }
-
+// TODO 改为线上数据
 fn load_json_market_event_candles() -> Vec<MarketEvent<Instrument, DataKind>> {
     let candles = fs::read_to_string(DATA_HISTORIC_CANDLES_1H).expect("failed to read file");
 

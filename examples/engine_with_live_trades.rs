@@ -153,10 +153,11 @@ async fn stream_market_event_trades() -> mpsc::UnboundedReceiver<MarketEvent<Ins
 
     tokio::spawn(async move {
         while let Some(trade) = trade_rx.recv().await {
+            println!("6666{trade:?}");
             let _ = tx.send(MarketEvent::from(trade));
         }
     });
-
+    println!("777{rx:?}");
     rx
 }
 
@@ -167,11 +168,11 @@ async fn listen_to_engine_events(mut event_rx: mpsc::UnboundedReceiver<Event>) {
         match event {
             Event::Market(market) => {
                 // Market Event occurred in Engine
-                println!("{market:?}");
+                println!("6666{market:?}");
             }
             Event::Signal(signal) => {
                 // Signal Event occurred in Engine
-                println!("{signal:?}");
+                println!("888{signal:?}");
             }
             Event::SignalForceExit(_) => {
                 // SignalForceExit Event occurred in Engine
