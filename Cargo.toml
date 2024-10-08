@@ -4,7 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dev-dependencies]
-tracing = { version = "0.1.40" }
 tracing-subscriber = { version = "0.3.16" }
 
 [dependencies]
